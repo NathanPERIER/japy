@@ -58,7 +58,9 @@ builder.add_group('t', [
     ('ト',   'to'),
     ('チャ', 'cha'),
     ('チュ', 'chu'),
-    ('チョ', 'cho')
+    ('チョ', 'cho'),
+    ('ティ', 'ti', SpecificUsageTag.FOREIGN_TRANSCRIPTION),
+    ('トゥ', 'tu', SpecificUsageTag.FOREIGN_TRANSCRIPTION)
 ])
 
 builder.add_group('n', [
@@ -150,7 +152,9 @@ builder.add_group(['d', 't', Diacritic.DAKUTEN], [
     ('ド',   'do'),
     ('ヂャ', 'ja', SpecificUsageTag.RARE),
     ('ヂュ', 'ju', SpecificUsageTag.RARE),
-    ('ヂョ', 'jo', SpecificUsageTag.RARE)
+    ('ヂョ', 'jo', SpecificUsageTag.RARE),
+    ('ディ', 'di', SpecificUsageTag.FOREIGN_TRANSCRIPTION),
+    ('ドゥ', 'du', SpecificUsageTag.FOREIGN_TRANSCRIPTION)
 ])
 
 builder.add_group(['b', 'h', Diacritic.DAKUTEN], [
@@ -179,12 +183,10 @@ builder.add_group(['p', 'h', Diacritic.HANDAKUTEN], [
 """
 Others (transcription of foreign sounds)
 
-ホゥ hu
-ティ ti 	トゥ tu
-ディ di 	ドゥ du
 ファ fa 	フィ fi 	フェ fe 	フォ fo
+ヴァ va 	ヴィ vi 	ヴ vu   	ヴェ ve 	ヴォ vo
 
-
+ホゥ hu
 ?   ラ゜ la 	リ゜ li 	ル゜ lu 	レ゜ le 	ロ゜ lo 
 
 """
