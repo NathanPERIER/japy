@@ -1,7 +1,7 @@
 
 from typing import Mapping
 
-from generic.kana import Diacritic
+from generic.kana import Diacritic, SpecificUsageTag
 from generic.builder import KanaTableBuilder
 
 small_chars: Mapping[str, str] = {
@@ -113,7 +113,9 @@ builder.add_group('r', [
 
 builder.add_group('w', [
     ('ワ', 'wa'),
-    ('ヲ', 'wo')  # Rare
+    ('ヰ', 'wi', SpecificUsageTag.DEPRECATED),
+    ('ヱ', 'we', SpecificUsageTag.DEPRECATED),
+    ('ヲ', 'wo', SpecificUsageTag.RARE)
 ])
 
 builder.add_group('n', [('n', 'ン')])
@@ -142,13 +144,13 @@ builder.add_group(['z', 's', Diacritic.DAKUTEN], [
 
 builder.add_group(['d', 't', Diacritic.DAKUTEN], [
     ('ダ',   'da'),
-    ('ヂ',   'ji'),       # Rare
-    ('ヅ',   'zu'),       # Rare
+    ('ヂ',   'ji', SpecificUsageTag.RARE),
+    ('ヅ',   'zu', SpecificUsageTag.RARE),
     ('デ',   'de'),
     ('ド',   'do'),
-    ('ヂャ', 'ja'), # Rare
-    ('ヂュ', 'ju'), # Rare
-    ('ヂョ', 'jo')  # Rare
+    ('ヂャ', 'ja', SpecificUsageTag.RARE),
+    ('ヂュ', 'ju', SpecificUsageTag.RARE),
+    ('ヂョ', 'jo', SpecificUsageTag.RARE)
 ])
 
 builder.add_group(['b', 'h', Diacritic.DAKUTEN], [
@@ -175,9 +177,6 @@ builder.add_group(['p', 'h', Diacritic.HANDAKUTEN], [
 
 
 """
-Deprecated: ヰ (wi), ヱ (we)
-
-
 Others (transcription of foreign sounds)
 
 ホゥ hu

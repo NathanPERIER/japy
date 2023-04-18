@@ -1,25 +1,44 @@
 
 from enum import Enum
+from typing import Final, Optional
+
+VOWEL_LENGTHENER = 'ー'
 
 class Diacritic(Enum) :
-    NONE       = 0
     DAKUTEN    = 1
     HANDAKUTEN = 2
 
-VOWEL_LENGTHENER = 'ー'
+class SpecificUsageTag(Enum) :
+    NONE                  = 0
+    DEPRECATED            = 1
+    RARE                  = 2
+    FOREIGN_TRANSCRIPTION = 3
+
+
+class ConsonantVoicing :
+
+    def __init__(self, consonant: str, diacritic: Diacritic) :
+        assert len(consonant) == 1
+        self.consonant: Final[str]       = consonant
+        self.diacritic: Final[Diacritic] = diacritic
 
 
 class Kana :
     
-    def __init__(self, char: str, romaji: str, consonant: str = None, diacritic = Diacritic.NONE) :
-        self.char      = char
-        self.romaji    = romaji
-        self.vowel     = romaji[-1]
-        self.consonant = consonant
-        self.diacritic = diacritic
+    def __init__(self, char: str, romaji: str, consonant: Optional[str], voicing: Optional[ConsonantVoicing], usage: SpecificUsageTag) :
+        assert len(char) in [1, 2]
+        assert consonant is None or len(consonant) == 1
+        self.char:      Final[str]           = char
+        self.romaji:    Final[str]           = romaji
+        self.consonant: Final[Optional[str]] = consonant
+        self.voicing: Final[Optional[ConsonantVoicing]] = voicing
+        self.usage:   Final[SpecificUsageTag]           = usage
 
-    def has_diacritic(self) -> bool :
-        return self.diacritic != Diacritic.NONE
+    def is_voiced(self) -> bool :
+        return self.voicing is not None
+    
+    def is_sokuon(self) -> bool :
+        return len(self.char) == 2
 
     def __str__(self) :
         return f"{self.char} ({self.romaji})"
