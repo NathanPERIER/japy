@@ -122,7 +122,10 @@ builder.add_group('w', [
     ('ワ', 'wa'),
     ('ヰ', 'wi', SpecificUsageTag.DEPRECATED),
     ('ヱ', 'we', SpecificUsageTag.DEPRECATED),
-    ('ヲ', 'wo', SpecificUsageTag.RARE)
+    ('ヲ', 'wo', SpecificUsageTag.RARE),
+    ('ウィ', 'wi', SpecificUsageTag.FOREIGN_TRANSCRIPTION),
+    ('ウェ', 'we', SpecificUsageTag.FOREIGN_TRANSCRIPTION),
+    ('ウォ', 'wo', SpecificUsageTag.FOREIGN_TRANSCRIPTION)
 ])
 
 builder.add_group('n', [('ン', 'n')])
@@ -184,41 +187,17 @@ builder.add_group('p', [
     ('ピョ', 'pyo')
 ])
 
+builder.add_group('f', [
+    ('ファ', 'fa', SpecificUsageTag.FOREIGN_TRANSCRIPTION),
+    ('フィ', 'fi', SpecificUsageTag.FOREIGN_TRANSCRIPTION),
+    ('フェ', 'fe', SpecificUsageTag.FOREIGN_TRANSCRIPTION),
+    ('フォ', 'fo', SpecificUsageTag.FOREIGN_TRANSCRIPTION)
+])
 
-"""
-Others (transcription of foreign sounds)
-
-ファ fa 	フィ fi 	フェ fe 	フォ fo
-ヴァ va 	ヴィ vi 	ヴ vu   	ヴェ ve 	ヴォ vo
-
-ホゥ hu
-?   ラ゜ la 	リ゜ li 	ル゜ lu 	レ゜ le 	ロ゜ lo 
-
-"""
-
-
-"""
-kana = {
-    'a':   'ア', 'i':   'イ', 'u':   'ウ', 'e':  'エ', 'o':  'オ',
-    'ka':  'カ', 'ki':  'キ', 'ku':  'ク', 'ke': 'ケ', 'ko': 'コ', 'kya': 'キャ', 'kyu': 'キュ', 'kyo': 'キョ', # K
-    'sa':  'サ', 'shi': 'シ', 'su':  'ス', 'se': 'セ', 'so': 'ソ', 'sha': 'シャ', 'shu': 'シュ', 'sho': 'ショ', # S
-    'ta':  'タ', 'chi': 'チ', 'tsu': 'ツ', 'te': 'テ', 'to': 'ト', 'cha': 'チャ', 'chu': 'チュ', 'cho': 'チョ', # T
-    'na':  'ナ', 'ni':  'ニ', 'nu':  'ヌ', 'ne': 'ネ', 'no': 'ノ', 'nya': 'ニャ', 'nyu': 'ニュ', 'nyo': 'ニョ', # N
-    'ha':  'ハ', 'hi':  'ヒ', 'fu':  'フ', 'he': 'ヘ', 'ho': 'ホ', 'hya': 'ヒャ', 'hyu': 'ヒュ', 'hyo': 'ヒョ', # H
-    'ma':  'マ', 'mi':  'ミ', 'mu':  'ム', 'me': 'メ', 'mo': 'モ', 'mya': 'ミャ', 'myu': 'ミュ', 'myo': 'ミョ', # M
-    'ya':  'ヤ',              'yu':  'ユ',             'yo': 'ヨ',                                              # Y
-    'ra':  'ラ', 'ri':  'リ', 'ru':  'ル', 're': 'レ', 'ro': 'ロ', 'rya': 'リャ', 'ryu': 'リュ', 'ryo': 'リョ', # R
-    'wa':  'ワ',                                       'wo': 'ヲ',                                              # W
-    'n':   'ン',
-    'ga':  'ガ', 'gi':  'ギ', 'gu':  'グ', 'ge': 'ゲ', 'go': 'ゴ', 'gya': 'ギャ', 'gyu': 'ギュ', 'gyo': 'ギョ', # G
-    'za':  'ザ', 'ji':  'ジ', 'zu':  'ズ', 'ze': 'ゼ', 'zo': 'ゾ', 'ja':  'ジャ', 'ju':  'ジュ', 'jo':  'ジョ', # Z
-    'da':  'ダ', 'dji': 'ヂ', 'dzu': 'ヅ', 'de': 'デ', 'do': 'ド',                                              # D
-    'ba':  'バ', 'bi':  'ビ', 'bu':  'ブ', 'be': 'ベ', 'bo': 'ボ', 'bya': 'ビャ', 'byu': 'ビュ', 'byo': 'ビョ', # B
-    'pa':  'パ', 'pi':  'ピ', 'pu':  'プ', 'pe': 'ペ', 'po': 'ポ', 'pya': 'ピャ', 'pyu': 'ピュ', 'pyo': 'ピョ', # P
-}
-
-# F	ファ fa	フィ fi	 	フェ fe	フォ fo	 	 	 
-# T	ツァ tsa	ティ ti	トゥ tu	 	 	 	 	 
-# W	 	 	 	ウェ we	ウォ wo	 	 	 
-"""
-
+builder.add_group('v', [
+    ('ヴァ', 'va', SpecificUsageTag.FOREIGN_TRANSCRIPTION),
+    ('ヴィ', 'vi', SpecificUsageTag.FOREIGN_TRANSCRIPTION),
+    ('ヴ',   'vu', ['ウ', Diacritic.DAKUTEN], SpecificUsageTag.FOREIGN_TRANSCRIPTION),
+    ('ヴェ', 've', SpecificUsageTag.FOREIGN_TRANSCRIPTION),
+    ('ヴォ', 'vo', SpecificUsageTag.FOREIGN_TRANSCRIPTION)
+])
