@@ -1,12 +1,12 @@
 
-from generic.kana import Kana, Diacritic, ConsonantVoicing, SpecificUsageTag
+from generic.kana import Kana, Diacritic, KanaVoicing, SpecificUsageTag
 from generic.table import KanaTable
 
 from typing import Sequence, Tuple, Union, Optional
 
-GroupConsonant = Union[Optional[str], Tuple[str,str,Diacritic]]
+KanaVoicingInit = Tuple[str,Diacritic]
 
-GroupInitialiserList = Sequence[Union[Tuple[str,str], Tuple[str,str,SpecificUsageTag]]]
+GroupInitialiserList = Sequence[Union[Tuple[str,str], Tuple[str,str,SpecificUsageTag], Tuple[str,str,KanaVoicingInit], Tuple[str,str,KanaVoicingInit,SpecificUsageTag]]]
 
 
 class KanaTableBuilder :
@@ -14,19 +14,17 @@ class KanaTableBuilder :
     def __init__(self) :
         self.kana = []
 
-    def add_group(self, cons: GroupConsonant, conf: GroupInitialiserList) :
-        if cons is None :
-            consonant = None
-            voicing   = None
-        elif type(cons) == str :
-            consonant = cons
-            voicing   = None
-        else :
-            consonant = cons[0]
-            voicing   = ConsonantVoicing(cons[1], cons[2])
+    def add_group(self, cons: Optional[str], conf: GroupInitialiserList) :
         for c in conf :
-            tag = SpecificUsageTag.NONE if len(c) == 2 else c[2]
-            self.kana.append(Kana(c[0], c[1], consonant, voicing, tag))
+            tag = SpecificUsageTag.NONE
+            voicing = None
+            if len(c) == 3 and type(c[2]) == SpecificUsageTag :
+                tag = c[2]
+            elif len(c) in [3, 4] :
+                voicing = KanaVoicing(c[2][0], c[2][1])
+            if len(c) == 4 :
+                tag = c[3]
+            self.kana.append(Kana(c[0], c[1], cons, voicing, tag))
 
     def build_table(self) -> KanaTable :
         return KanaTable(self.kana)

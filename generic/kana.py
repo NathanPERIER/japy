@@ -15,7 +15,7 @@ class SpecificUsageTag(Enum) :
     FOREIGN_TRANSCRIPTION = 3
 
 
-class ConsonantVoicing :
+class KanaVoicing :
 
     def __init__(self, consonant: str, diacritic: Diacritic) :
         assert len(consonant) == 1
@@ -25,14 +25,14 @@ class ConsonantVoicing :
 
 class Kana :
     
-    def __init__(self, char: str, romaji: str, consonant: Optional[str], voicing: Optional[ConsonantVoicing], usage: SpecificUsageTag) :
+    def __init__(self, char: str, romaji: str, consonant: Optional[str], voicing: Optional[KanaVoicing], usage: SpecificUsageTag) :
         assert len(char) in [1, 2]
         assert consonant is None or len(consonant) == 1
         self.char:      Final[str]           = char
         self.romaji:    Final[str]           = romaji
         self.consonant: Final[Optional[str]] = consonant
-        self.voicing: Final[Optional[ConsonantVoicing]] = voicing
-        self.usage:   Final[SpecificUsageTag]           = usage
+        self.voicing: Final[Optional[KanaVoicing]] = voicing
+        self.usage:   Final[SpecificUsageTag]      = usage
 
     def is_voiced(self) -> bool :
         return self.voicing is not None

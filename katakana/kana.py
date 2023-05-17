@@ -7,7 +7,12 @@ from generic.builder import KanaTableBuilder
 small_chars: Mapping[str, str] = {
     'ャ': 'ヤ',
     'ュ': 'ユ',
-    'ョ': 'ヨ'
+    'ョ': 'ヨ',
+    'ァ': 'ア',
+    'ィ': 'イ',
+    'ゥ': 'ウ',
+    'ェ': 'エ',
+    'ォ': 'オ'
 }
 
 iteration_mark = 'ヽ'
@@ -120,36 +125,36 @@ builder.add_group('w', [
     ('ヲ', 'wo', SpecificUsageTag.RARE)
 ])
 
-builder.add_group('n', [('n', 'ン')])
+builder.add_group('n', [('ン', 'n')])
 
-builder.add_group(['g', 'k', Diacritic.DAKUTEN], [
-    ('ガ',   'ga'),
-    ('ギ',   'gi'),
-    ('グ',   'gu'),
-    ('ゲ',   'ge'),
-    ('ゴ',   'go'),
+builder.add_group('g', [
+    ('ガ',   'ga', ['カ', Diacritic.DAKUTEN]),
+    ('ギ',   'gi', ['キ', Diacritic.DAKUTEN]),
+    ('グ',   'gu', ['ク', Diacritic.DAKUTEN]),
+    ('ゲ',   'ge', ['ケ', Diacritic.DAKUTEN]),
+    ('ゴ',   'go', ['コ', Diacritic.DAKUTEN]),
     ('ギャ', 'gya'),
     ('ギュ', 'gyu'),
     ('ギョ', 'gyo')
 ])
 
-builder.add_group(['z', 's', Diacritic.DAKUTEN], [
-    ('ザ',   'za'),
-    ('ジ',   'ji'),
-    ('ズ',   'zu'),
-    ('ゼ',   'ze'),
-    ('ゾ',   'zo'),
+builder.add_group('z', [
+    ('ザ',   'za', ['サ', Diacritic.DAKUTEN]),
+    ('ジ',   'ji', ['シ', Diacritic.DAKUTEN]),
+    ('ズ',   'zu', ['ス', Diacritic.DAKUTEN]),
+    ('ゼ',   'ze', ['セ', Diacritic.DAKUTEN]),
+    ('ゾ',   'zo', ['ソ', Diacritic.DAKUTEN]),
     ('ジャ', 'ja'),
     ('ジュ', 'ju'),
     ('ジョ', 'jo')
 ])
 
-builder.add_group(['d', 't', Diacritic.DAKUTEN], [
-    ('ダ',   'da'),
-    ('ヂ',   'ji', SpecificUsageTag.RARE),
-    ('ヅ',   'zu', SpecificUsageTag.RARE),
-    ('デ',   'de'),
-    ('ド',   'do'),
+builder.add_group('d', [
+    ('ダ',   'da', ['タ', Diacritic.DAKUTEN]),
+    ('ヂ',   'ji', ['チ', Diacritic.DAKUTEN], SpecificUsageTag.RARE),
+    ('ヅ',   'zu', ['ツ', Diacritic.DAKUTEN], SpecificUsageTag.RARE),
+    ('デ',   'de', ['テ', Diacritic.DAKUTEN]),
+    ('ド',   'do', ['ト', Diacritic.DAKUTEN]),
     ('ヂャ', 'ja', SpecificUsageTag.RARE),
     ('ヂュ', 'ju', SpecificUsageTag.RARE),
     ('ヂョ', 'jo', SpecificUsageTag.RARE),
@@ -157,23 +162,23 @@ builder.add_group(['d', 't', Diacritic.DAKUTEN], [
     ('ドゥ', 'du', SpecificUsageTag.FOREIGN_TRANSCRIPTION)
 ])
 
-builder.add_group(['b', 'h', Diacritic.DAKUTEN], [
-    ('バ',   'ba'),
-    ('ビ',   'bi'),
-    ('ブ',   'bu'),
-    ('ベ',   'be'),
-    ('ボ',   'bo'),
+builder.add_group('b', [
+    ('バ',   'ba', ['ハ', Diacritic.DAKUTEN]),
+    ('ビ',   'bi', ['ヒ', Diacritic.DAKUTEN]),
+    ('ブ',   'bu', ['フ', Diacritic.DAKUTEN]),
+    ('ベ',   'be', ['ヘ', Diacritic.DAKUTEN]),
+    ('ボ',   'bo', ['ホ', Diacritic.DAKUTEN]),
     ('ビャ', 'bya'),
     ('ビュ', 'byu'),
     ('ビョ', 'byo')
 ])
 
-builder.add_group(['p', 'h', Diacritic.HANDAKUTEN], [
-    ('パ',   'pa'),
-    ('ピ',   'pi'),
-    ('プ',   'pu'),
-    ('ペ',   'pe'),
-    ('ポ',   'po'),
+builder.add_group('p', [
+    ('パ',   'pa', ['ハ', Diacritic.HANDAKUTEN]),
+    ('ピ',   'pi', ['ヒ', Diacritic.HANDAKUTEN]),
+    ('プ',   'pu', ['フ', Diacritic.HANDAKUTEN]),
+    ('ペ',   'pe', ['ヘ', Diacritic.HANDAKUTEN]),
+    ('ポ',   'po', ['ホ', Diacritic.HANDAKUTEN]),
     ('ピャ', 'pya'),
     ('ピュ', 'pyu'),
     ('ピョ', 'pyo')

@@ -1,9 +1,11 @@
 
+from typing import Sequence
+
 from generic.kana import Kana
 
 class KanaTable :
     
-    def __init__(self, kana: list[Kana]) :
+    def __init__(self, kana: Sequence[Kana]) :
         self.romaji = {}
         self.kana = kana
         for k in kana :
